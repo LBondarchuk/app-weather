@@ -35,15 +35,8 @@ const FindCity = () => {
   };
 
   const handleAddCity = async () => {
-    if (!currentUser || !weather) {
-      dispatch(
-        setNotification({
-          type: 'info',
-          text: 'Info',
-          title: `Log in for the ability to save data`,
-          show: true,
-        }),
-      );
+    if (!currentUser) {
+      return;
     } else {
       if (includesInTheList()) {
         RemoveCity();
@@ -70,7 +63,7 @@ const FindCity = () => {
           </div>
         </div>
 
-        {weather && (
+        {weather && currentUser && (
           <LoadingButton
             onClick={handleAddCity}
             loading={loading}
