@@ -7,10 +7,8 @@ import { motion } from 'framer-motion';
 import Input from '../Inputs/SearchInput/SearchInput';
 import addCityToUser from '../../utils/handlers/addDataToUser';
 import { useUser } from '../../providers/UserProvider/UserProvider';
-
 import { fetchWeatherFromSearch, removeWeather } from '../../lib/redux/slices/weatherFromSearch';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { setNotification } from '../../lib/redux/slices/notification';
 
 const FindCity = () => {
   const { currentUser } = useUser();
@@ -29,6 +27,7 @@ const FindCity = () => {
     if (!searchValue) return;
     dispatch(fetchWeatherFromSearch(searchValue));
   }, [dispatch, searchValue]);
+
   const RemoveCity = () => {
     setSearchValue('');
     dispatch(removeWeather());
