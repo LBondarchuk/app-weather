@@ -26,11 +26,20 @@ function App() {
   useEffect(() => {
     setLoading(true);
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user && user.email)
+      if (user && user.email) {
         setCurrentUser({
           id: user.uid,
           email: user.email,
         });
+        dispatch(
+          setNotification({
+            type: 'success',
+            text: `Authorized as ${user.email}`,
+            title: `Welcome`,
+            show: true,
+          }),
+        );
+      }
 
       if (!user) {
         dispatch(

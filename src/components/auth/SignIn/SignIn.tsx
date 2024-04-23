@@ -6,7 +6,6 @@ import { ModalForm } from '../../Forms/ModalForm/ModalForm';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase/config';
 import { useUser } from '../../../providers/UserProvider/UserProvider';
-import LoadingButton from '@mui/lab/LoadingButton';
 import CustomLoadingButton from '../../Buttons/LoadingButton/LoadingButton';
 
 interface FormValues {

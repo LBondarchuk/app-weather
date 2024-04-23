@@ -13,7 +13,11 @@ export const getWeatherOnce = async (cityName: string, thunkAPI: GetThunkAPI<Asy
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch weather data for ${cityName}`);
+      if (response.status === 404) {
+        console.log('City not found, handling gracefully.');
+        return thunkAPI.rejectWithValue('City not found');
+      }
+      throw new Error('Failed to fetch the weather data');
     }
 
     const data = await response.json();
